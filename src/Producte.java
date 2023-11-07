@@ -1,6 +1,6 @@
 public class Producte {
     protected int codi;
-    protected int preu;
+    protected float preu;
     protected String nom;
 
     public int getCodi() {
@@ -11,7 +11,7 @@ public class Producte {
         this.codi = codi;
     }
 
-    public int getPreu() {
+    public float getPreu() {
         return preu;
     }
 
@@ -27,9 +27,4 @@ public class Producte {
         this.nom = nom;
     }
 
-    public Producte() {
-        this.codi = codi;
-        this.preu = preu;
-        this.nom = nom;
-    }
 }

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Carrefive.iml" filepath="$PROJECT_DIR$/Carrefive.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Proyecto-Programacion/Proyecto-Programacion.iml" filepath="$PROJECT_DIR$/../Proyecto-Programacion/Proyecto-Programacion.iml" />
     </modules>
   </component>
 </project>

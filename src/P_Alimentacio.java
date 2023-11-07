@@ -1,23 +1,21 @@
 import java.time.LocalDate;
 
 public class P_Alimentacio extends Producte{
-    private LocalDate dataCaducitat;
+    private String dataCaducitat;
 
-    public  P_Alimentacio(){
-        super();
-    }
 
     public LocalDate getDataCaducitat() {
-        return dataCaducitat;
+        return LocalDate.parse(dataCaducitat);
     }
 
-    public void setDataCaducitat(LocalDate dataCaducitat) {
+    public void setDataCaducitat(String dataCaducitat) {
         this.dataCaducitat = dataCaducitat;
     }
 
-    public P_Alimentacio(int codi, int preu, String nom, LocalDate dataCaducitat) {
-        super();
-        this.dataCaducitat = dataCaducitat;
+    public P_Alimentacio(int codi, float preu, String nom, LocalDate dataCaducitat) {
+        this.codi = codi;
+        this.nom = nom;
+        this.preu = preu;
+        this.dataCaducitat = String.valueOf(dataCaducitat);
     }
-
 }
