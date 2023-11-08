@@ -18,4 +18,5 @@ public class P_Alimentacio extends Producte{
         this.preu = preu;
         this.dataCaducitat = String.valueOf(dataCaducitat);
     }
+
 }

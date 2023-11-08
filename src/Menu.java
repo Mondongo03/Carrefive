@@ -1,12 +1,6 @@
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.Period;
-import java.time.chrono.ChronoPeriod;
-import java.util.Locale;
 import java.util.Scanner;
-import java.time.temporal.*;
-
-import static java.time.temporal.TemporalAccessor.*;
 
 public class Menu {
     Scanner input = new Scanner(System.in);
@@ -52,61 +46,117 @@ public class Menu {
         return subEleccion;
     }
     public P_Alimentacio menuCreacioAlimentacio(Controlador controlador){
-        boolean repetido = false;
         System.out.println("╔═══════════════════════════════════════╗");
         System.out.println("║     Quin es el codi del producte?     ║");
         System.out.println("╚═══════════════════════════════════════╝");
-        System.out.println("(Si es el mateix codi que un altre producte enregistrat es completara automaticament amb les dades previament registrades)");
         int codi = input.nextInt();
         String nom;
         LocalDate dataCaducitat;
-        int  indiceRepe = 0;
         float preu;
         int dia, mes, any;
-        LocalDate caducidad;
 
-        for (int i = 0; i < controlador.carro.carroList.size(); i++) {
-            if (codi == controlador.carro.carroList.get(i).getCodi()){
-                repetido = true;
-                indiceRepe = i;
-            }
-        }
-        if (repetido == true){
-            nom = controlador.carro.carroList.get(indiceRepe).getNom();
-            preu = controlador.carro.carroList.get(indiceRepe).getPreu();
-            dataCaducitat = LocalDate.parse(controlador.carro.carroList.get(indiceRepe).getDataCaducitat().toString());
-        }
-        else {
-            input.nextLine();
-            System.out.println("╔═══════════════════════════════════════╗");
-            System.out.println("║     Quin es el nom del producte?      ║");
-            System.out.println("╚═══════════════════════════════════════╝");
-            nom = input.nextLine();
+                input.nextLine();
+                System.out.println("╔═══════════════════════════════════════╗");
+                System.out.println("║     Quin es el nom del producte?      ║");
+                System.out.println("╚═══════════════════════════════════════╝");
+                nom = input.nextLine();
 
-            System.out.println("╔═══════════════════════════════════════╗");
-            System.out.println("║     Quin es el preu del producte?     ║");
-            System.out.println("╚═══════════════════════════════════════╝");
-            preu = input.nextInt();
-            input.nextLine();
+                System.out.println("╔═══════════════════════════════════════╗");
+                System.out.println("║     Quin es el preu del producte?     ║");
+                System.out.println("╚═══════════════════════════════════════╝");
+                preu = input.nextInt();
+                input.nextLine();
 
-            System.out.println("╔═════════════════════════════════════════════════════════════╗");
-            System.out.println("║ Quin es la data de caducitat del producte? (dia)            ║");
-            System.out.println("╚═════════════════════════════════════════════════════════════╝");
-            dia = input.nextInt();
-            System.out.println("╔═════════════════════════════════════════════════════════════╗");
-            System.out.println("║ Quin es la data de caducitat del producte? (mes)            ║");
-            System.out.println("╚═════════════════════════════════════════════════════════════╝");
-            mes = input.nextInt();
-            System.out.println("╔═════════════════════════════════════════════════════════════╗");
-            System.out.println("║ Quin es la data de caducitat del producte? (any)            ║");
-            System.out.println("╚═════════════════════════════════════════════════════════════╝");
-            any = input.nextInt();
+                System.out.println("╔═════════════════════════════════════════════════════════════╗");
+                System.out.println("║ Quina és la data de caducitat del producte? (dia)            ║");
+                System.out.println("╚═════════════════════════════════════════════════════════════╝");
+                dia = input.nextInt();
+                System.out.println("╔═════════════════════════════════════════════════════════════╗");
+                System.out.println("║ Quina és la data de caducitat del producte? (mes)            ║");
+                System.out.println("╚═════════════════════════════════════════════════════════════╝");
+                mes = input.nextInt();
+                System.out.println("╔═════════════════════════════════════════════════════════════╗");
+                System.out.println("║ Quina és la data de caducitat del producte? (any)            ║");
+                System.out.println("╚═════════════════════════════════════════════════════════════╝");
+                any = input.nextInt();
 
-            dataCaducitat = LocalDate.of(any, mes, dia);
+
+                dataCaducitat = LocalDate.of(any, mes, dia);
             Period periodo = Period.between(dataCaducitat, LocalDate.now());
             float totalDias = periodo.getDays() + (periodo.getMonths() * 30) + (periodo.getYears() * 365);
-            preu = (float) (preu-(preu*(1/(totalDias+1))+(preu*0.1)));
-        }
+            preu = (float) (preu-(preu*(1/(totalDias+1))+(preu*0.1f)));
         return new P_Alimentacio( codi, preu , nom, dataCaducitat);
+    }
+
+    public P_Electronica menuCreacioElectronica(Controlador controlador){
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║     Quin es el codi del producte?     ║");
+        System.out.println("╚═══════════════════════════════════════╝");
+        int codi = input.nextInt();
+        String nom;
+        float preu;
+        int dia, mes, any;
+        LocalDate garantia;
+        input.nextLine();
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║     Quin es el nom del producte?      ║");
+        System.out.println("╚═══════════════════════════════════════╝");
+        nom = input.nextLine();
+
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║     Quin es el preu del producte?     ║");
+        System.out.println("╚═══════════════════════════════════════╝");
+        preu = input.nextInt();
+        input.nextLine();
+
+        System.out.println("╔══════════════════════════════════════════════════════════════════╗");
+        System.out.println("║ Quina es la data de termini de la garantia del producte? (dia)   ║");
+        System.out.println("╚══════════════════════════════════════════════════════════════════╝");
+        dia = input.nextInt();
+        System.out.println("╔══════════════════════════════════════════════════════════════════╗");
+        System.out.println("║ Quina es la data de termini de la garantia del producte? (mes)   ║");
+        System.out.println("╚══════════════════════════════════════════════════════════════════╝");
+        mes = input.nextInt();
+        System.out.println("╔══════════════════════════════════════════════════════════════════╗");
+        System.out.println("║ Quina es la data de termini de la garantia del producte? (any)   ║");
+        System.out.println("╚══════════════════════════════════════════════════════════════════╝");
+        any = input.nextInt();
+
+            garantia = LocalDate.of(any, mes, dia);
+            Period periodo = Period.between(garantia, LocalDate.now());
+            float totalDias = periodo.getDays() + (periodo.getMonths() * 30) + (periodo.getYears() * 365);
+            preu = preu+preu*(totalDias/365)*0.1f;
+
+        return new P_Electronica( codi, preu, nom, garantia);
+    }
+
+    public P_Textil menuCreacioTextil(Controlador controlador){
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║     Quin es el codi del producte?     ║");
+        System.out.println("╚═══════════════════════════════════════╝");
+        int codi = input.nextInt();
+        String nom;
+
+        float preu;
+
+        input.nextLine();
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║     Quin es el nom del producte?      ║");
+        System.out.println("╚═══════════════════════════════════════╝");
+        nom = input.nextLine();
+
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║     Quin es el preu del producte?     ║");
+        System.out.println("╚═══════════════════════════════════════╝");
+        preu = input.nextInt();
+        input.nextLine();
+
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║   Quin es el material del producte?   ║");
+        System.out.println("╚═══════════════════════════════════════╝");
+        String material = input.nextLine();
+
+
+        return new P_Textil( codi, preu , nom, material);
     }
 }

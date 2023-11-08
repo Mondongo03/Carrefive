@@ -1,11 +1,14 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
-public class Carro {
+public class CarroAlimentacio {
     ArrayList<P_Alimentacio>
             carroList;
 
-     Carro() {
+     CarroAlimentacio() {
         this.carroList = new ArrayList<P_Alimentacio>();
     }
+
 
 }

@@ -15,12 +15,21 @@ public class Main {
                             P_Alimentacio pA = menu.menuCreacioAlimentacio(controlador);
                             controlador.addAlimentacio(pA);
                             break;
+
+                        case 2:
+                            P_Textil pT = menu.menuCreacioTextil(controlador);
+                            controlador.addTextil(pT);
+                            break;
+                        case 3:
+                            P_Electronica pE = menu.menuCreacioElectronica(controlador);
+                            controlador.addElectronica(pE);
                     }
                     break;
                 case 2:
-                    controlador.llistarCarro(); break;
+                    controlador.passarCaixa();
+                    break;
                 case 3:
-                    System.out.println("3");
+                    controlador.MostrarCarro();
             }
 
         }while (eleccion !=0);

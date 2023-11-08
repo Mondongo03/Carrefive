@@ -15,8 +15,11 @@ public class P_Electronica extends Producte{
         this.garantia = garantia;
     }
 
-    public P_Electronica(int codi, int preu, String nom, LocalDate garantia) {
-        super();
-        this.garantia = garantia;
+    public P_Electronica(int codi, float preu, String nom, LocalDate garantia) {
+        this.codi = codi;
+        this.nom = nom;
+        this.preu = preu;
+        this.garantia = LocalDate.parse(String.valueOf(garantia));
     }
+
 }
